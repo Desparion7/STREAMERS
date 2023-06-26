@@ -1,0 +1,58 @@
+.streamersList {
+  background-color: var(--color-bg1);
+  color: var(--text-color);
+  &__streamer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+    margin: 1rem 0;
+    border-radius: 5px;
+    background-color: var(--color-bg2);
+    h3 {
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      color: var(--text-color2);
+    }
+    &--details {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      img {
+        width: 100px;
+        border-radius: 50%;
+      }
+    }
+    &--votes {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      text-transform: uppercase;
+      button {
+        font-size: 1.5rem;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.upvotes {
+  color: rgb(67, 204, 36);
+}
+.downvotes {
+  color: red;
+}
+.upvoteBtn,
+.downvoteBtn {
+  transition: color 0.3s;
+}
+.upvoteBtn:hover {
+  color: rgb(67, 204, 36);
+}
+.downvoteBtn:hover {
+  color: red;
+}

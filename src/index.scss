@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700;800;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+:root {
+  --text-color: white;
+  --text-color2: #ae67fa;
+  --color-bg1: #040c18;
+  --color-bg2: #042c54;
+  --input-bg: #031b34;
+  --gradient-text: linear-gradient(89.97deg, #ae67fa 1.84%, #f49867 102.67%);
+}
+
+body {
+  background: -moz-radial-gradient(
+    circle at 0% 12%,
+    rgba(0, 40, 83, 1) 0%,
+    rgba(4, 12, 24, 1) 100%
+  );
+  /* safari 5.1+,chrome 10+ */
+  background: -webkit-radial-gradient(
+    circle at 0% 12%,
+    rgba(0, 40, 83, 1) 0%,
+    rgba(4, 12, 24, 1) 100%
+  );
+  /* opera 11.10+ */
+  background: -o-radial-gradient(
+    circle at 0% 12%,
+    rgba(0, 40, 83, 1) 0%,
+    rgba(4, 12, 24, 1) 100%
+  );
+  /* ie 10+ */
+  background: -ms-radial-gradient(
+    circle at 0% 12%,
+    rgba(0, 40, 83, 1) 0%,
+    rgba(4, 12, 24, 1) 100%
+  );
+  /* global 92%+ browsers support */
+  background: radial-gradient(
+    circle at 0% 12%,
+    rgba(0, 40, 83, 1) 0%,
+    rgba(4, 12, 24, 1) 100%
+  );
+}
+.containter {
+  padding: 2rem 4rem;
+}
+.gradient__text {
+  background: var(--gradient-text);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.orangeButton {
+  padding: 1rem 2rem;
+  color: #fff;
+  background: #ff4820;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 25px;
+  margin-top: 1rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+.orangeButton:hover {
+  background: #cd2b06;
+}
