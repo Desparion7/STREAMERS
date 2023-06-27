@@ -4,7 +4,7 @@ import StreamersList from '../components/homePage/StreamersList';
 
 const Homepage = () => {
   return (
-    <div className={`${styles.homePage}`}>
+    <div className={styles.homePage}>
       <StreamerAddForm />
       <StreamersList />
     </div>

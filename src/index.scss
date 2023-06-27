@@ -10,9 +10,12 @@
 :root {
   --text-color: white;
   --text-color2: #ae67fa;
+  --text-color3: #81afdd;
   --color-bg1: #040c18;
   --color-bg2: #042c54;
   --input-bg: #031b34;
+  --btn: #ff4820;
+  --btn-hover: #cd2b06;
   --gradient-text: linear-gradient(89.97deg, #ae67fa 1.84%, #f49867 102.67%);
 }
 
@@ -59,7 +62,7 @@ body {
 .orangeButton {
   padding: 1rem 2rem;
   color: #fff;
-  background: #ff4820;
+  background: var(--btn);
   font-family: var(--font-family);
   font-weight: 500;
   font-size: 18px;
@@ -72,5 +75,17 @@ body {
   transition: background 0.3s;
 }
 .orangeButton:hover {
-  background: #cd2b06;
+  background: var(--btn-hover);
+}
+.errorText {
+  text-align: center;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  color: red;
+}
+.successText {
+  text-align: center;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  color: green;
 }

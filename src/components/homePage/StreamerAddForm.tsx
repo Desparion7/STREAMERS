@@ -1,8 +1,14 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import { Formik, Form, Field, ErrorMessage, FormikHelpers } from 'formik';
 import { FormValues } from '../../interface/form-interface';
 import styles from './StreamerAddForm.module.scss';
+import { useAddStreamerMutation } from '../../app/slice/streamersApiSlice';
+import LoadingSpinner from '../ui/LoadingSpinner';
 
 const StreamerAddForm = () => {
+  const [addNewStreamer, { isSuccess, isLoading, isError, error }] =
+    useAddStreamerMutation();
+
   // Function to validate form
   const validateForm = (values: FormValues) => {
     const errors: Partial<FormValues> = {};
@@ -16,7 +22,7 @@ const StreamerAddForm = () => {
     if (!values.description) {
       errors.description = 'Required field';
     }
-    if (values.description.trim().length > 150) {
+    if (values.description.trim().length > 350) {
       errors.description = 'Description is too long, maximum 150 characters';
     }
 
@@ -27,15 +33,22 @@ const StreamerAddForm = () => {
     values: FormValues,
     actions: FormikHelpers<FormValues>
   ) => {
-    console.log('ok');
+    await addNewStreamer({
+      name: values.name,
+      platform: values.platform,
+      description: values.description,
+    });
+    actions.setSubmitting(false);
+    actions.resetForm();
   };
 
   return (
     <div className={`${styles.streamerAddForm} containter gradient__bg`}>
+      {isLoading && <LoadingSpinner />}
       <Formik
         initialValues={{
           name: '',
-          platform: '',
+          platform: 'Twitch',
           description: '',
         }}
         validate={validateForm}
@@ -54,7 +67,7 @@ const StreamerAddForm = () => {
             />
             <label htmlFor="platform">Streaming Platform:</label>
             <Field as="select" id="platform" name="platform">
-              <option value="Twitch">Twitch</option>
+              <option defaultValue="Twitch">Twitch</option>
               <option value="YouTube">YouTube</option>
               <option value="TikTok">TikTok</option>
               <option value="Kick">Kick</option>
@@ -67,7 +80,7 @@ const StreamerAddForm = () => {
               name="description"
               cols={50}
               rows={5}
-              maxLength={150}
+              maxLength={350}
               className={
                 errors.description && touched.description && styles.errorInput
               }
@@ -88,6 +101,14 @@ const StreamerAddForm = () => {
             <button type="submit" className="orangeButton">
               Add Streamer
             </button>
+            {isError && error && 'data' in error && (
+              <div className="errorText">{error.data.message}</div>
+            )}
+            {isSuccess && (
+              <div className="successText">
+                New streamer added successfully!
+              </div>
+            )}
           </Form>
         )}
       </Formik>
