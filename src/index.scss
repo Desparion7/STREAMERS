@@ -51,7 +51,7 @@ body {
   );
 }
 .containter {
-  padding: 2rem 4rem;
+  padding: 1rem;
 }
 .gradient__text {
   background: var(--gradient-text);
@@ -60,12 +60,12 @@ body {
   -webkit-text-fill-color: transparent;
 }
 .orangeButton {
-  padding: 1rem 2rem;
+  padding: 1rem;
   color: #fff;
   background: var(--btn);
   font-family: var(--font-family);
   font-weight: 500;
-  font-size: 18px;
+  font-size: 1rem;
   line-height: 25px;
   margin-top: 1rem;
   border: none;
@@ -88,4 +88,14 @@ body {
   font-size: 1.1rem;
   margin-top: 1rem;
   color: green;
+}
+
+@media screen and (min-width: 600px) {
+  .containter {
+    padding: 2rem 4rem;
+  }
+  .orangeButton {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+  }
 }

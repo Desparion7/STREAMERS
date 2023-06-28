@@ -97,8 +97,6 @@ const StreamerAddForm = () => {
               as="textarea"
               id="description"
               name="description"
-              cols={50}
-              rows={5}
               maxLength={350}
               className={
                 errors.description && touched.description && styles.errorInput

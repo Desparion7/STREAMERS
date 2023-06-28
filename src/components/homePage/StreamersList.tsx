@@ -36,32 +36,36 @@ const StreamersList = () => {
               <h3>{streamer.name}</h3>
             </div>
             <div className={styles['streamersList__streamer--votes']}>
-              <p>
-                Upvotes:{' '}
-                <span className={styles.upvotes}>{streamer.upvote}</span>
-              </p>
-              <p>
-                Downvotes:{' '}
-                <span className={styles.downvotes}>{streamer.downvote}</span>
-              </p>
-              <button
-                type="button"
-                className={styles.upvoteBtn}
-                onClick={() => {
-                  updateVoteHandler(1, streamer._id);
-                }}
-              >
-                <BiSolidLike />
-              </button>
-              <button
-                type="button"
-                className={styles.downvoteBtn}
-                onClick={() => {
-                  updateVoteHandler(-1, streamer._id);
-                }}
-              >
-                <BiSolidDislike />
-              </button>
+              <div className={styles['streamersList__streamer--votes-btn']}>
+                <p>
+                  Upvotes:{' '}
+                  <span className={styles.upvotes}>{streamer.upvote}</span>
+                </p>
+                <button
+                  type="button"
+                  className={styles.upvoteBtn}
+                  onClick={() => {
+                    updateVoteHandler(1, streamer._id);
+                  }}
+                >
+                  <BiSolidLike />
+                </button>
+              </div>
+              <div className={styles['streamersList__streamer--votes-btn']}>
+                <p>
+                  Downvotes:{' '}
+                  <span className={styles.downvotes}>{streamer.downvote}</span>
+                </p>
+                <button
+                  type="button"
+                  className={styles.downvoteBtn}
+                  onClick={() => {
+                    updateVoteHandler(-1, streamer._id);
+                  }}
+                >
+                  <BiSolidDislike />
+                </button>
+              </div>
             </div>
             <button
               type="button"

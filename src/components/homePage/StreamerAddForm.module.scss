@@ -10,10 +10,10 @@
   form {
     display: flex;
     flex-direction: column;
+    width: 100%;
     gap: 0.5rem;
-    padding: 2rem;
+    padding: 1rem;
     background-color: var(--color-bg1);
-    border-radius: 5%;
   }
   input,
   textarea,
@@ -37,4 +37,13 @@
 }
 .errorText {
   color: red;
+}
+
+@media screen and (min-width: 600px) {
+  .streamerAddForm {
+    form {
+      width: 60%;
+      padding: 2rem;
+    }
+  }
 }
