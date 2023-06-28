@@ -32,7 +32,7 @@ const StreamersList = () => {
         {data.map((streamer) => (
           <div className={styles.streamersList__streamer} key={streamer._id}>
             <div className={styles['streamersList__streamer--details']}>
-              <img src="./asmongold.png" alt="streamer" />
+              <img src={streamer.imgUrl} alt={streamer.name} />
               <h3>{streamer.name}</h3>
             </div>
             <div className={styles['streamersList__streamer--votes']}>

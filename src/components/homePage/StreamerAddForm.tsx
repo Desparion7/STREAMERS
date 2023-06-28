@@ -1,18 +1,20 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import { Formik, Form, Field, ErrorMessage, FormikHelpers } from 'formik';
+import { useState, useRef } from 'react';
 import { FormValues } from '../../interface/form-interface';
-import styles from './StreamerAddForm.module.scss';
 import { useAddStreamerMutation } from '../../app/slice/streamersApiSlice';
 import LoadingSpinner from '../ui/LoadingSpinner';
+import styles from './StreamerAddForm.module.scss';
 
 const StreamerAddForm = () => {
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [selectedFile, setSelectedFile] = useState<null | File>();
   const [addNewStreamer, { isSuccess, isLoading, isError, error }] =
     useAddStreamerMutation();
 
   // Function to validate form
   const validateForm = (values: FormValues) => {
     const errors: Partial<FormValues> = {};
-
     if (!values.name) {
       errors.name = 'Required field';
     }
@@ -25,7 +27,6 @@ const StreamerAddForm = () => {
     if (values.description.trim().length > 350) {
       errors.description = 'Description is too long, maximum 150 characters';
     }
-
     return errors;
   };
   // Function to add new streamer
@@ -37,9 +38,13 @@ const StreamerAddForm = () => {
       name: values.name,
       platform: values.platform,
       description: values.description,
+      photo: selectedFile as File,
     });
     actions.setSubmitting(false);
     actions.resetForm();
+    if (inputRef.current) {
+      inputRef.current.value = '';
+    }
   };
 
   return (
@@ -73,6 +78,20 @@ const StreamerAddForm = () => {
               <option value="Kick">Kick</option>
               <option value="Rumble">Rumble</option>
             </Field>
+            <label htmlFor="photo">Add images:</label>
+            <input
+              ref={inputRef}
+              type="file"
+              id="photo"
+              name="photo"
+              accept="image/*"
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                const fileList = e.target.files;
+                if (fileList) {
+                  setSelectedFile(fileList[0]);
+                }
+              }}
+            />
             <label htmlFor="description">Description:</label>
             <Field
               as="textarea"

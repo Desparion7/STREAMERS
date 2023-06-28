@@ -1,7 +1,7 @@
 import { io } from 'socket.io-client';
 import apiSlice from '../api/apiSlice';
 import { Streamer } from '../../interface/streamers-interface';
-import { FormValues } from '../../interface/form-interface';
+import { FormValuesPhoto } from '../../interface/form-interface';
 
 const socket = io('http://localhost:3000');
 
@@ -54,16 +54,19 @@ const streamersApiSlice = apiSlice.injectEndpoints({
       }),
       providesTags: [{ type: 'Streamer', id: 'LIST' }],
     }),
-    addStreamer: builder.mutation<Streamer, FormValues>({
-      query: ({ name, description, platform }) => ({
-        url: '/streamers',
-        method: 'POST',
-        body: {
-          name,
-          description,
-          platform,
-        },
-      }),
+    addStreamer: builder.mutation<Streamer, FormValuesPhoto>({
+      query: ({ name, description, platform, photo }) => {
+        const formData = new FormData();
+        formData.append('name', name);
+        formData.append('description', description);
+        formData.append('platform', platform);
+        formData.append('photo', photo);
+        return {
+          url: '/streamers',
+          method: 'POST',
+          body: formData,
+        };
+      },
       invalidatesTags: [{ type: 'Streamers', id: 'LIST' }],
     }),
     updateStreamerVote: builder.mutation<

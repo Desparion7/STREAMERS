@@ -33,12 +33,19 @@ const StreamerPage = () => {
           </div>
           <div className={styles['streamerPage__main--right-btn']}>
             Main platform:
-            {data.platform === 'youtube' && (
-              <img src="/youtube.PNG" alt="twitch" />
+            {data.platform === 'YouTube' && (
+              <img src="/youtube.PNG" alt="youtube" />
             )}
-            {data.platform === 'twitch' && (
+            {data.platform === 'Twitch' && (
               <img src="/twitch.PNG" alt="twitch" />
             )}
+            {data.platform === 'Rumble' && (
+              <img src="/rumble.PNG" alt="rumble" />
+            )}
+            {data.platform === 'TikTok' && (
+              <img src="/tiktok.PNG" alt="tiktok" />
+            )}
+            {data.platform === 'Kick' && <img src="/kick.PNG" alt="kick" />}
             <button
               type="button"
               onClick={() => {
