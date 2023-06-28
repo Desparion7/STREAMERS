@@ -32,7 +32,7 @@ const StreamerPage = () => {
             <p>{data.description}</p>
           </div>
           <div className={styles['streamerPage__main--right-btn']}>
-            Main platform:
+            Platform:
             {data.platform === 'YouTube' && (
               <img src="/youtube.PNG" alt="youtube" />
             )}

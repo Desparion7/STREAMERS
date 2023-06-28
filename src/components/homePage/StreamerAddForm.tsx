@@ -18,6 +18,9 @@ const StreamerAddForm = () => {
     if (!values.name) {
       errors.name = 'Required field';
     }
+    if (values.name.length > 20) {
+      errors.name = 'Streamer name can only have 20 characters';
+    }
     if (!values.platform) {
       errors.platform = 'Required field';
     }
@@ -111,6 +114,13 @@ const StreamerAddForm = () => {
               'Description is too long, maximum 150 characters' && (
               <ErrorMessage
                 name="description"
+                component="div"
+                className={styles.errorText}
+              />
+            )}
+            {errors.name === 'Streamer name can only have 20 characters' && (
+              <ErrorMessage
+                name="name"
                 component="div"
                 className={styles.errorText}
               />
